@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <div class="check">
+        <h1>Request API Bank Sampah</h1>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "https://script.google.com/macros/s/AKfycbxJgrnuH6jnS4Wd_61qx88Wbp0ULjJwbT-ZTUjDoEu-hqIHpCVCBqRs88BwrOHZbCCZ/exec?login=loginSession",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    password: "E24",
+                    role: "nasabah"
+                }),
+                success: function(response) {
+                    console.log("Success:", response);
+                    // Handle the response as needed
+                    $('.check').append('<p>Response: ' + JSON.stringify(response) + '</p>');
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error:", error);
+                    // Handle the error
+                    $('.check').append('<p>Error: ' + error + '</p>');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
