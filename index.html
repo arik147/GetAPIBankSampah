@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="check">
@@ -12,27 +12,25 @@
     </div>
     
     <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: "https://script.google.com/macros/s/AKfycbxJgrnuH6jnS4Wd_61qx88Wbp0ULjJwbT-ZTUjDoEu-hqIHpCVCBqRs88BwrOHZbCCZ/exec?login=loginSession",
-                method: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    password: "E24",
-                    role: "nasabah"
-                }),
-                success: function(response) {
-                    console.log("Success:", response);
-                    // Handle the response as needed
-                    $('.check').append('<p>Response: ' + JSON.stringify(response) + '</p>');
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error:", error);
-                    // Handle the error
-                    $('.check').append('<p>Error: ' + error + '</p>');
-                }
-            });
+        const url = "https://script.google.com/macros/s/AKfycbw7UrqFooXT_IrZNPzpEhBV_SK3G_p139rWmTODomWKRazhsf6FVvEaZNPVExh-OiABGw/exec?login=loginSession";
+
+        $.ajax({
+            url: url,
+            method: "POST",
+            body: JSON.stringify({
+                password: "E24",
+                role: "nasabah"
+            }),
+            success: function(data) {
+                console.log("Success:", data);
+                $('.check').append('<p>Response: ' + JSON.stringify(data) + '</p>');
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", error);
+                $('.check').append('<p>Error: ' + error + '</p>');
+            }
         });
+
     </script>
 </body>
 </html>
